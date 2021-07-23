@@ -16,7 +16,7 @@ func TestHandlers_Handler(t *testing.T) {
 		// Test Case List
 		{
 			name:           "Test #1",
-			in:             "eyJhbGciOiJIUzI1NiIsImtpZCI6IkNaMThKWEhCUTBMSzk5ZnZGeEV1eUhQVmdMMUw3dHJTIiwidHlwIjoiSldUIn0.eyJleHAiOjE2MjYwNzkwNDB9.GrC5Rv-P1y5L3b_UAeP4pLUWEnROEaLE8s4JGhr4fVA",
+			in:             "YourToken",
 			secretKey:		YourSecretKey,
 		},
 	}
