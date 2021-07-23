@@ -1,4 +1,4 @@
-module github.com/Jokes-Sampah/go-token
+module github.com/Jokes-Sampah/gotoken
 
 go 1.14
 

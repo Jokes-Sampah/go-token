@@ -1,9 +1,11 @@
-package go_token
+package gotoken
 
 import (
 	"testing"
 	"time"
 )
+
+const YourSecretKey = "SecretKey"
 
 func TestHandlers_Handler(t *testing.T) {
 	tests := []struct {
@@ -13,9 +15,9 @@ func TestHandlers_Handler(t *testing.T) {
 	}{
 		// Test Case List
 		{
-			name:           "good",
+			name:           "Test #1",
 			in:             "eyJhbGciOiJIUzI1NiIsImtpZCI6IkNaMThKWEhCUTBMSzk5ZnZGeEV1eUhQVmdMMUw3dHJTIiwidHlwIjoiSldUIn0.eyJleHAiOjE2MjYwNzkwNDB9.GrC5Rv-P1y5L3b_UAeP4pLUWEnROEaLE8s4JGhr4fVA",
-			secretKey:		"little-star-black-young-now-could-dog",
+			secretKey:		YourSecretKey,
 		},
 	}
 

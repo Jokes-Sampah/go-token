@@ -1,4 +1,4 @@
-package go_token
+package gotoken
 
 import (
 	"github.com/golang-jwt/jwt"
