@@ -9,10 +9,10 @@ import (
 type TokenData struct {
 	jwt.StandardClaims
 	Id           string `json:"id"`
-	Email        string `json:"email"`
-	GoogleUserId string `json:"googleUserId"`
-	Name         string `json:"name"`
-	PhoneNumber  string `json:"phoneNumber"`
+	Email        string `json:"em"`
+	GoogleUserId string `json:"gid"`
+	Name         string `json:"nm"`
+	PhoneNumber  string `json:"pn"`
 }
 
 func ExtractToken(tokenString string, secretKey string) (*TokenData, error) {
