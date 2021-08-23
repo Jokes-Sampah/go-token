@@ -1,16 +1,18 @@
 package gotoken
 
 import (
+	"errors"
+
 	"github.com/golang-jwt/jwt"
 )
 
 type TokenData struct {
 	jwt.StandardClaims
-	Id string `json:"id"`
-	Email string `json:"email"`
+	Id           string `json:"id"`
+	Email        string `json:"email"`
 	GoogleUserId string `json:"googleUserId"`
-	Name string `json:"name"`
-	PhoneNumber string `json:"phoneNumber"`
+	Name         string `json:"name"`
+	PhoneNumber  string `json:"phoneNumber"`
 }
 
 func ExtractToken(tokenString string, secretKey string) (*TokenData, error) {
@@ -21,22 +23,21 @@ func ExtractToken(tokenString string, secretKey string) (*TokenData, error) {
 		return []byte(secretKey), nil
 	})
 
-	if token.Valid {
-		// token is valid
-		// let the service decided
+	if token != nil && token.Valid {
+		// Token is either expired or not active yet
+		// Just pass, let the service decided
 	} else if ve, ok := err.(*jwt.ValidationError); ok {
 		if ve.Errors&jwt.ValidationErrorMalformed != 0 {
-			return token.Claims.(*TokenData), err
+			return (*TokenData)(nil), err
 		} else if ve.Errors&(jwt.ValidationErrorExpired|jwt.ValidationErrorNotValidYet) != 0 {
 			// Token is either expired or not active yet
 			// Just pass, let the service decided
 		} else {
 			// Couldn't handle this token
-			return token.Claims.(*TokenData), err
+			return (*TokenData)(nil), err
 		}
 	} else {
-		// Couldn't handle this token
-		return token.Claims.(*TokenData), err
+		return (*TokenData)(nil), errors.New("invalid structure")
 	}
 
 	return token.Claims.(*TokenData), nil
